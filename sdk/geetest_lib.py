@@ -61,7 +61,7 @@ class GeetestLib:
     # 构建一次验证返回数据
     def build_register_result(self, origin_challenge, digestmod):
         # origin_challenge为空或者值为0代表失败
-        if not origin_challenge:
+        if not origin_challenge or origin_challenge == "0":
             # 本地随机生成32位字符串
             challenge = "".join(random.sample(string.ascii_letters + string.digits, 32))
             data = {"success": 0, "gt": self.geetest_id, "challenge": challenge, "new_captcha": self.NEW_CAPTCHA}
