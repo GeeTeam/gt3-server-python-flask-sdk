@@ -60,7 +60,7 @@ class GeetestLib:
         # origin_challenge为空或者值为0代表失败
         if not origin_challenge or origin_challenge == "0":
             # 本地随机生成32位字符串
-            challenge = "".join(random.sample(string.lowercase + string.digits, 32))
+            challenge = "".join(random.sample('abcdefghijklmnopqrstuvwxyz0123456789', 32))
             data = json.dumps(
                 {"success": 0, "gt": self.geetest_id, "challenge": challenge, "new_captcha": self.NEW_CAPTCHA})
             self.libResult.set_all(0, data, "请求极验register接口失败，后续流程走宕机模式")
