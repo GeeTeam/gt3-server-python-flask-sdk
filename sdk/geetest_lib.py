@@ -41,7 +41,7 @@ class GeetestLib:
         return self.libResult
 
     def request_register(self, param_dict):
-        param_dict.update({"gt": self.geetest_id, "json_format": self.JSON_FORMAT})
+        param_dict.update({"gt": self.geetest_id, "sdk": self.VERSION, "json_format": self.JSON_FORMAT})
         register_url = self.API_URL + self.REGISTER_URL
         self.gtlog("requestRegister(): 验证初始化, 向极验发送请求, url={0}, params={1}.".format(register_url, param_dict))
         try:
@@ -100,7 +100,7 @@ class GeetestLib:
     def failValidate(self, challenge, validate, seccode):
         self.gtlog(
             "failValidate(): 开始二次验证 宕机模式, challenge={0}, validate={1}, seccode={2}.".format(challenge, validate,
-                                                                                                  seccode))
+                                                                                            seccode))
         if not self.check_param(challenge, validate, seccode):
             self.libResult.set_all(0, "", "宕机模式，本地校验，参数challenge、validate、seccode不可为空.")
         else:
